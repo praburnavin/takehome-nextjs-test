@@ -9,6 +9,18 @@
   background-color: #009b86;
 }
 
+.selectedCard {
+  background-color: #cfe2f3;
+}
+
+.card:hover {
+  background-color: #34ac9c;
+}
+
+.selectedCard:hover {
+  background-color: #cfe2f3;
+}
+
 .title {
   text-align: center;
   color: black;

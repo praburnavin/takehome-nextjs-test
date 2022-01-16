@@ -48,10 +48,6 @@
   background-color: #34ac9c;
 }
 
-.card:hover {
-  background-color: #34ac9c;
-}
-
 @media (max-width: 800px) {
   .grid {
     grid-auto-flow: column;

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import classNames from "classnames";
 import styles from "../styles/Nominee.module.css";
 
 export interface NomineeProps {
@@ -24,8 +25,10 @@ const Nominee = ({
 }: NomineeProps) => {
   return (
     <span
-      className={styles.card}
-      style={{ backgroundColor: isSelectedNominee ? "#cfe2f3" : "#009b86" }}
+      className={classNames(
+        styles.card,
+        isSelectedNominee && styles.selectedCard
+      )}
     >
       <span className={styles.title}>{title}</span>
       <Image
