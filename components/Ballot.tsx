@@ -44,6 +44,19 @@ const Ballot = ({ ballotsData }: Props) => {
     setBallots(selectedNominees);
   };
 
+  const handleSubmit = () => {
+    setShowModal(true);
+    const selectedNominees = ballots.map(({ items }) =>
+      items.filter(({ isSelectedNominee }) => isSelectedNominee)
+    );
+    console.log({ selectedNominees });
+  };
+
+  const handleModal = () => {
+    setShowModal(false);
+    setBallots(ballotsData);
+  };
+
   return (
     <div className={styles.ballot}>
       <h1 className={styles.title}>AWARDS 2021</h1>
@@ -70,25 +83,13 @@ const Ballot = ({ ballotsData }: Props) => {
 
       <div className={styles.submitSection}>
         <div className={styles.submit}>
-          <button
-            className={styles.submitButton}
-            onClick={() => {
-              setShowModal(true);
-            }}
-          >
+          <button className={styles.submitButton} onClick={handleSubmit}>
             <span>SUBMIT BALLOT BUTTON</span>
           </button>
         </div>
       </div>
 
-      {showModal && (
-        <Modal
-          setShowModal={() => {
-            setShowModal(false);
-            setBallots(ballotsData);
-          }}
-        />
-      )}
+      {showModal && <Modal handleModal={handleModal} />}
     </div>
   );
 };

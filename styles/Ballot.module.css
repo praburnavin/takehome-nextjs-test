@@ -34,7 +34,7 @@
 
 .submitSection {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: -58px;
   flex-wrap: wrap;
 }
