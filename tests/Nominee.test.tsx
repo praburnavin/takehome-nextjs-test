@@ -1,4 +1,4 @@
-import { render, screen, logRoles, logDOM } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Nominee from "../components/Nominee";
 import { nominee } from "./utils/mockData";
 

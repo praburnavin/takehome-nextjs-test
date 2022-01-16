@@ -3,7 +3,7 @@ import Modal from "../components/Modal";
 
 describe("Modal", () => {
   it("renders success message and close icon", () => {
-    render(<Modal setShowModal={() => {}} />);
+    render(<Modal handleModal={() => {}} />);
 
     const success = screen.getByText("Success");
     expect(success).toBeInTheDocument();
