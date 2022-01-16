@@ -7,10 +7,10 @@ export interface NomineeProps {
   photoUrL: string;
   id: string;
   isSelectedNominee?: boolean;
-  award: string;
-  isSelectedAward?: boolean;
+  category: string;
+  isSelectedCategory?: boolean;
   updateSelectedNominees: (
-    selectedAward: string,
+    selectedCategory: string,
     selectedNominee: string
   ) => void;
 }
@@ -20,8 +20,8 @@ const Nominee = ({
   photoUrL,
   isSelectedNominee,
   updateSelectedNominees,
-  award,
-  isSelectedAward,
+  category,
+  isSelectedCategory,
 }: NomineeProps) => {
   return (
     <span
@@ -41,9 +41,9 @@ const Nominee = ({
       <button
         className={styles.select}
         onClick={() => {
-          updateSelectedNominees(award, title);
+          updateSelectedNominees(category, title);
         }}
-        disabled={isSelectedAward ? !isSelectedNominee : false}
+        disabled={isSelectedCategory ? !isSelectedNominee : false}
         data-testid="select-button"
       >
         {isSelectedNominee ? "Unselect" : "Select"}

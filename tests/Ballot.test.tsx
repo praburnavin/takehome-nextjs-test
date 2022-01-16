@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import Ballot from "../components/Ballot";
 import { ballotsData } from "./utils/mockData";
 
-describe("Awards", () => {
+describe("Ballot", () => {
   it("renders heading and submit button", () => {
     render(<Ballot ballotsData={ballotsData} />);
 

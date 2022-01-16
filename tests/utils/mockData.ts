@@ -3,7 +3,7 @@ export const nominee = {
   photoUrL:
     "https://variety.com/wp-content/uploads/2020/12/nomadland_ver2.jpg",
   id: "nomadland",
-  award : 'Best Picture',
+  category : 'Best Picture',
   updateSelectedNominees : ()=>{}
 };
 

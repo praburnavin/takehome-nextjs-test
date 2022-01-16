@@ -7,7 +7,7 @@ interface Ballot {
   title: string;
   items: Array<NomineeProps>;
   id?: string;
-  isSelectedAward?: boolean;
+  isSelectedCategory?: boolean;
 }
 
 interface Props {
@@ -19,13 +19,13 @@ const Ballot = ({ ballotsData }: Props) => {
   const [showModal, setShowModal] = useState(false);
 
   const updateSelectedNominee = (
-    selectedAward: string,
+    selectedCategory: string,
     selectedNominee: string
   ): void => {
-    const selectedNominees = ballots.map((award) => {
-      const { title, items: nominees, isSelectedAward = false } = award;
+    const selectedNominees = ballots.map((category) => {
+      const { title, items: nominees, isSelectedCategory = false } = category;
 
-      if (title === selectedAward) {
+      if (title === selectedCategory) {
         const selectedItems = nominees.map((nominee) => {
           const { title, isSelectedNominee } = nominee;
           return title === selectedNominee
@@ -33,12 +33,12 @@ const Ballot = ({ ballotsData }: Props) => {
             : nominee;
         });
         return {
-          ...award,
-          isSelectedAward: !isSelectedAward,
+          ...category,
+          isSelectedCategory: !isSelectedCategory,
           items: selectedItems,
         };
       }
-      return award;
+      return category;
     });
 
     setBallots(selectedNominees);
@@ -60,7 +60,7 @@ const Ballot = ({ ballotsData }: Props) => {
   return (
     <div className={styles.ballot}>
       <h1 className={styles.title}>AWARDS 2021</h1>
-      {ballots?.map(({ title, items, isSelectedAward = false }) => {
+      {ballots?.map(({ title, items, isSelectedCategory = false }) => {
         return (
           <div key={title}>
             <div className={styles.grid}>
@@ -69,8 +69,8 @@ const Ballot = ({ ballotsData }: Props) => {
                 return (
                   <Nominee
                     {...item}
-                    award={title}
-                    isSelectedAward={isSelectedAward}
+                    category={title}
+                    isSelectedCategory={isSelectedCategory}
                     updateSelectedNominees={updateSelectedNominee}
                     key={item?.title}
                   />
