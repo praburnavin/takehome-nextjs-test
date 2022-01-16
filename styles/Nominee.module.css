@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  border: 1px solid black;
+  padding: 3px 12px;
+  background-color: #009b86;
+}
+
+.title {
+  text-align: center;
+  color: black;
+}
+
+.logo {
+  border-radius: 50%;
+}
+
+.select {
+  padding: 8px;
+  width: 50%;
+  background-color: lightgrey;
+}
