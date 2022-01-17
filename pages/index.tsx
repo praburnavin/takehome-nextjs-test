@@ -11,9 +11,7 @@ const Welcome = () => {
       const res = await fetch("/api/ballots");
       const { items = [] } = await res.json();
       setBallotsData(items);
-    } catch (err) {
-      console.log("");
-    }
+    } catch (err) {}
   };
 
   useEffect(() => {

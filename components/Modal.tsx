@@ -3,16 +3,20 @@ import styles from "../styles/Modal.module.css";
 interface Props {
   handleModal: () => void;
 }
-const Modal = ({ handleModal }: Props) => (
-  <div className={styles.overlay}>
-    <div className={styles.modal}>
-      <div className={styles.header}>
-        <a href="#" onClick={handleModal} data-testid="close-icon">
+const Modal = ({ handleModal }: Props) => {
+  return (
+    <div className={styles.overlay}>
+      <div className={styles.modal}>
+        <span
+          className={styles.header}
+          onClick={handleModal}
+          data-testid="close-icon"
+        >
           x
-        </a>
+        </span>
+        <p className={styles.success}>Success</p>
       </div>
-      <p className={styles.success}>Success</p>
     </div>
-  </div>
-);
+  );
+};
 export default Modal;

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Nominee from "../components/Nominee";
 import { nominee } from "./utils/mockData";
 
@@ -12,7 +12,7 @@ describe("Nominee", () => {
     const image = screen.getByAltText(`picture of ${nominee.title}`);
     expect(image).toBeInTheDocument();
 
-    const selectButton = screen.getByTestId("select-button");
+    const selectButton = screen.getByTestId(`${nominee.title}-select-button`);
     expect(selectButton).toBeInTheDocument();
   });
 });

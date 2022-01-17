@@ -4,6 +4,15 @@ import { ballotsData } from "./utils/mockData";
 
 describe("Ballot", () => {
   it("renders heading ,submit button, catgeory and nominee", () => {
+    const [
+      {
+        items: [{ title: firstNominee }],
+      },
+      {
+        items: [{ title: secondNominee }],
+      },
+    ] = ballotsData;
+
     render(<Ballot ballotsData={ballotsData} />);
 
     const heading = screen.getByRole("heading");
@@ -15,7 +24,17 @@ describe("Ballot", () => {
     const category = screen.getByText(ballotsData[0].title);
     expect(category).toBeInTheDocument();
 
+    const selectFirstNominee = screen.getByTestId(
+      `${firstNominee}-select-button`
+    );
+    const selectSecondNominee = screen.getByTestId(
+      `${secondNominee}-select-button`
+    );
+
+    fireEvent.click(selectFirstNominee);
+    fireEvent.click(selectSecondNominee);
     fireEvent.click(submitButton);
+
     const successModal = screen.getByText("Success");
     expect(successModal).toBeInTheDocument();
   });

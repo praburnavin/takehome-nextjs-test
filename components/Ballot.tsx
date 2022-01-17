@@ -46,15 +46,24 @@ const Ballot = ({ ballotsData }: Props) => {
 
   const handleSubmit = () => {
     setShowModal(true);
-    const selectedNominees = ballots.map(({ items }) =>
-      items.filter(({ isSelectedNominee }) => isSelectedNominee)
-    );
+
+    const selectedNominees = ballots.reduce((init, ballot) => {
+      const { title: category, items } = ballot;
+      const { title: nominee = null } =
+        items?.filter(({ isSelectedNominee }) => isSelectedNominee)[0] || {};
+      return { ...init, [category]: nominee };
+    }, {});
+
     console.log({ selectedNominees });
   };
 
   const handleModal = () => {
     setShowModal(false);
     setBallots(ballotsData);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (

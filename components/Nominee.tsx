@@ -22,34 +22,32 @@ const Nominee = ({
   updateSelectedNominees,
   category,
   isSelectedCategory,
-}: NomineeProps) => {
-  return (
-    <span
-      className={classNames(
-        styles.card,
-        isSelectedNominee && styles.selectedCard
-      )}
+}: NomineeProps) => (
+  <div
+    className={classNames(
+      styles.card,
+      isSelectedNominee && styles.selectedCard
+    )}
+  >
+    <span className={styles.title}>{title}</span>
+    <Image
+      width="100px"
+      height="100px"
+      src={photoUrL}
+      alt={`picture of ${title}`}
+      className={styles.logo}
+    />
+    <button
+      className={styles.select}
+      onClick={() => {
+        updateSelectedNominees(category, title);
+      }}
+      disabled={isSelectedCategory ? !isSelectedNominee : false}
+      data-testid={`${title}-select-button`}
     >
-      <span className={styles.title}>{title}</span>
-      <Image
-        width="100px"
-        height="100px"
-        src={photoUrL}
-        alt={`picture of ${title}`}
-        className={styles.logo}
-      />
-      <button
-        className={styles.select}
-        onClick={() => {
-          updateSelectedNominees(category, title);
-        }}
-        disabled={isSelectedCategory ? !isSelectedNominee : false}
-        data-testid="select-button"
-      >
-        {isSelectedNominee ? "Unselect" : "Select"}
-      </button>
-    </span>
-  );
-};
+      {isSelectedNominee ? "Unselect" : "Select"}
+    </button>
+  </div>
+);
 
 export default Nominee;
